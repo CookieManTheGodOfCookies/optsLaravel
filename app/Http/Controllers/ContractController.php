@@ -34,4 +34,6 @@ class ContractController extends Controller
 
         return redirect('/companies/' . $request->company_id);
     }
+
+    //TODO : update для контракта
 }

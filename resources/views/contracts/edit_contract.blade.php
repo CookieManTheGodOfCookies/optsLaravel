@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="col-md-6 offset-3" style="border: 1px solid lightgrey; border-radius: 1px">
-    <form method="POST" action="">
+    <form method="POST" action="/contracts/">
         {{ csrf_field() }}
         <div class="form-group">
             <h3>Edit contract</h3>
