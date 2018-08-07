@@ -34,4 +34,13 @@ class AnnexController extends Controller
 
         return redirect('/contracts/' . request('contract_id'));
     }
+
+    public function update(Request $request, Annex $annex) {
+        // updates an annex
+    }
+
+    public function editForm(Annex $annex) {
+        $practice_types = DB::table('practice_types')->get();
+        return view('annexes.edit_annex', compact('annex', 'practice_types'));
+    }
 }

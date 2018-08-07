@@ -17,6 +17,11 @@
                     <td>{{ $annex->practice_start }}</td>
                     <td>{{ $annex->practice_end }}</td>
                     <td>{{ $practice_types[$annex->practice_type_id - 1]->type }}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="window.location.href='/annexes/{{ $annex->id }}/edit'">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

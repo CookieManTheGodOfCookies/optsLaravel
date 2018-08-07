@@ -53,3 +53,5 @@ Route::get('/add-contract/{company}', 'ContractController@addForm');
 
 Route::get('/add-annex/{contract}', 'AnnexController@addForm');
 Route::post('/annexes', 'AnnexController@store');
+Route::get('/annexes/{annex}/edit', 'AnnexController@editForm');
+Route::post('/annexes/{annex}', 'AnnexController@update');
