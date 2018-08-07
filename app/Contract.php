@@ -11,4 +11,8 @@ class Contract extends Model
     public function company() {
         return $this->belongsTo('App\Company');
     }
+
+    public function annexes() {
+        return $this->hasMany('App\Annex');
+    }
 }

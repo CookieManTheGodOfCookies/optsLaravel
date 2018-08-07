@@ -48,4 +48,8 @@ Route::get('/companies/{company}/edit', 'CompaniesController@editForm');
 Route::post('/contracts', 'ContractController@store');
 Route::get('/contracts/{contract}/edit', 'ContractController@editForm');
 Route::post('/contracts/{contract}', 'ContractController@update');
+Route::get('/contracts/{contract}', 'ContractController@show');
 Route::get('/add-contract/{company}', 'ContractController@addForm');
+
+Route::get('/add-annex/{contract}', 'AnnexController@addForm');
+Route::post('/annexes', 'AnnexController@store');
