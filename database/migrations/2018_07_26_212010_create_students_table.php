@@ -20,8 +20,10 @@ class CreateStudentsTable extends Migration
             $table->string('patronymic');
             $table->integer('idNumber');
             $table->string('group');
-            $table->integer('practiceID')->default('0');
+            $table->unsignedInteger('annex_id')->index();
             $table->timestamps();
+
+            $table->foreign('annex_id')->references('id')->on('annexes');
         });
     }
 

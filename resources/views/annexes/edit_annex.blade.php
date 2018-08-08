@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 <label for="practiceTypeSelect">Practice type: </label>
-                <select class="form-control" style="height: 35px;">
+                <select class="form-control" style="height: 35px;" name="practice_type_id">
                     @foreach($practice_types as $practice_type)
                         @if($practice_type->id === $annex->practice_type_id)
                             <option value="{{ $practice_type->id }}" selected>{{ $practice_type->type }}</option>

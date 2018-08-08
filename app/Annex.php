@@ -11,4 +11,8 @@ class Annex extends Model
     public function contract() {
         return $this->belongsTo('App\Contract');
     }
+
+    public function student() {
+        return $this->belongsTo('App\Student');
+    }
 }

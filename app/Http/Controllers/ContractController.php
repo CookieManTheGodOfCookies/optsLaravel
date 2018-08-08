@@ -38,7 +38,6 @@ class ContractController extends Controller
     }
 
     public function update(Request $request, Contract $contract) {
-        // dd($contract);
         $request->validate([
             'number' => 'required|unique:contracts,id,'. $contract->id . '|min:0|max:999999',
             'date_of_contract' => 'required|date',
@@ -46,7 +45,6 @@ class ContractController extends Controller
         ]);
 
         if((int) $request->number !== (int) $contract->number) {
-            // dd($request->number, $contract->number);
             if(Contract::where('number', '=', $request->number)->first() !== null)
                 return redirect()->back()->withErrors('This number has already been taken!');
             else
@@ -56,6 +54,11 @@ class ContractController extends Controller
                     'expiration_date' => request('expiration_date'),
                 ]);
         }
+        else
+            $contract->update([
+                'date_of_contract' => request('date_of_contract'),
+                'expiration_date' => request('expiration_date'), // сложновато 
+            ]);
         return redirect('/companies/' . $contract->company->id);
     }
 

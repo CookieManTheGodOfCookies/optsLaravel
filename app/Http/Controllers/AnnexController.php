@@ -22,8 +22,6 @@ class AnnexController extends Controller
             'practice_end' => 'date|after:practice_start|required',
         ]);
 
-        // dd(request('practice_type'));
-
         $annex = new Annex;
         $annex->number = request('number');
         $annex->practice_start = request('practice_start');
@@ -36,7 +34,19 @@ class AnnexController extends Controller
     }
 
     public function update(Request $request, Annex $annex) {
-        // updates an annex
+        $request->validate([
+            'number' => 'required|unique:annexes,number,'. $annex->id .'|min:0|max:999999',
+            'practice_start' => 'required|date',
+            'practice_end' => 'required|date|after:practice_start',
+        ]);
+
+        $annex->number = request('number');
+        $annex->practice_start = request('practice_start');
+        $annex->practice_end = request('practice_end');
+        $annex->practice_type_id = request('practice_type_id');
+        $annex->save();
+
+        return redirect('/contracts/' . $annex->contract->id);
     }
 
     public function editForm(Annex $annex) {
