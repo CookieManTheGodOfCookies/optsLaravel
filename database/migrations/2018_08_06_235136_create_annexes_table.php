@@ -20,10 +20,12 @@ class CreateAnnexesTable extends Migration
             $table->date('practice_end');
             $table->unsignedInteger('contract_id')->index();
             $table->unsignedInteger('practice_type_id')->index();
+            $table->unsignedInteger('student_id')->index()->nullable();
             $table->timestamps();
 
             $table->foreign('contract_id')->references('id')->on('contracts');
             $table->foreign('practice_type_id')->references('id')->on('practice_types');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('set null');
         });
     }
 

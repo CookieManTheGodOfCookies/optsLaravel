@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Contract;
 use App\Annex;
+use App\Student;
 
 class AnnexController extends Controller
 {
@@ -52,5 +53,28 @@ class AnnexController extends Controller
     public function editForm(Annex $annex) {
         $practice_types = DB::table('practice_types')->get();
         return view('annexes.edit_annex', compact('annex', 'practice_types'));
+    }
+
+    public function attachStudentView(Annex $annex) {
+        $students = Student::whereNull('annex_id')->get();
+        return view('annexes.attach_student', compact('annex', 'students'));
+    }
+
+    public function attachStudent(Request $request, Annex $annex) {
+        $student = Student::find(request('student_id'));
+        $annex->student_id = request('student_id');
+        $student->annex_id = $annex->id;
+        $annex->save();
+        $student->save();
+        return redirect('/contracts/' . $annex->contract->id);
+    }
+
+    public function detach(Annex $annex) {
+        // dd($annex);
+        $annex->student->annex_id = null;
+        $annex->student_id = null;
+        $annex->student->save();
+        $annex->save();
+        return redirect()->back();
     }
 }

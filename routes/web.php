@@ -55,3 +55,6 @@ Route::get('/add-annex/{contract}', 'AnnexController@addForm');
 Route::post('/annexes', 'AnnexController@store');
 Route::get('/annexes/{annex}/edit', 'AnnexController@editForm');
 Route::post('/annexes/{annex}', 'AnnexController@update');
+Route::get('/annexes/{annex}/attach_choose', 'AnnexController@attachStudentView');
+Route::post('/annexes/{annex}/attach', 'AnnexController@attachStudent');
+Route::get('/annexes/{annex}/detach', 'AnnexController@detach');

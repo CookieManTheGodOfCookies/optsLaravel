@@ -18,12 +18,12 @@ class CreateStudentsTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('patronymic');
-            $table->integer('idNumber');
+            $table->integer('id_number');
             $table->string('group');
-            $table->unsignedInteger('annex_id')->index();
+            $table->unsignedInteger('annex_id')->index()->nullable();
             $table->timestamps();
 
-            $table->foreign('annex_id')->references('id')->on('annexes');
+            $table->foreign('annex_id')->references('id')->on('annexes')->onDelete('set null');
         });
     }
 
