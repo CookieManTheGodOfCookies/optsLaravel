@@ -43,7 +43,7 @@ Route::post('/companies/{company}', 'CompaniesController@update');
 Route::get('/companies/{company}/edit', 'CompaniesController@editForm');
 
 
-//TODO : здесь демонстрируется самая запутанная и трудная для понимания логика RESTful. Наслаждайтесь.
+// здесь демонстрируется самая запутанная и трудная для понимания логика RESTful. Наслаждайтесь.
 
 Route::post('/contracts', 'ContractController@store');
 Route::get('/contracts/{contract}/edit', 'ContractController@editForm');
@@ -58,3 +58,8 @@ Route::post('/annexes/{annex}', 'AnnexController@update');
 Route::get('/annexes/{annex}/attach_choose', 'AnnexController@attachStudentView');
 Route::post('/annexes/{annex}/attach', 'AnnexController@attachStudent');
 Route::get('/annexes/{annex}/detach', 'AnnexController@detach');
+
+// deleting
+Route::get('/annexes/{annex}/delete', 'AnnexController@delete');
+Route::get('/contracts/{contract}/delete', 'ContractController@delete');
+Route::get('/companies/{company}/delete', 'CompaniesController@delete');

@@ -77,4 +77,9 @@ class AnnexController extends Controller
         $annex->save();
         return redirect()->back();
     }
+
+    public function delete(Annex $annex) {
+        $annex->delete();
+        return redirect()->back();
+    }
 }

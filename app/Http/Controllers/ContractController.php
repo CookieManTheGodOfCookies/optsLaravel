@@ -67,4 +67,13 @@ class ContractController extends Controller
         $practice_types = DB::table('practice_types')->get();
         return view('contracts.contract', compact('contract', 'annexes', 'practice_types'));
     }
+
+    public function delete(Contract $contract) {
+        $company_id = $contract->company->id;
+        foreach ($contract->annexes as $annex) {
+            $annex->delete();
+        }
+        $contract->delete();
+        return redirect('/companies/' . $company_id);
+    }
 }

@@ -63,4 +63,15 @@ class CompaniesController extends Controller
         }
         return redirect('/companies');
     }
+
+    public function delete(Company $company) {
+        foreach($company->contracts as $contract) {
+            foreach($contract->annexes as $annex) {
+                $annex->delete();
+            }
+            $contract->delete();
+        }
+        $company->delete();
+        return redirect('/companies');
+    }
 }

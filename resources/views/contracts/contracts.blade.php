@@ -1,6 +1,9 @@
 <button type="button" class="btn btn-primary" onclick="location.href='/add-contract/{{{ $company->id }}}'">
     <span class="glyphicon glyphicon-plus"></span> Add Contract
 </button>
+<button type="button" class="btn btn-danger" onclick="location.href='/companies/{{ $company->id }}/delete'">
+    <span class="glyphicon glyphicon-remove"></span> Delete Company
+</button>
 @if(count($contracts) > 0)
 <table class="table">
     <thead>

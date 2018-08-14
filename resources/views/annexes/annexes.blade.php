@@ -1,6 +1,9 @@
 <button type="button" class="btn btn-primary" onclick="location.href='/add-annex/{{{ $contract->id }}}'">
     <span class="glyphicon glyphicon-plus"></span> Add Annex
 </button>
+<button type="button" class="btn btn-danger" onclick="location.href='/contracts/{{ $contract->id }}/delete'">
+    <span class="glyphicon glyphicon-remove"></span> Delete contract
+</button>
 @if(count($annexes) > 0)
     <table class="table">
         <thead>
@@ -25,14 +28,17 @@
                             </button>
                         @else
                             {{  $annex->student->surname}} {{ $annex->student->id_number }}
-                            <button type="button" class="btn btn-danger" onclick="location.href='/annexes/{{{ $annex->id }}}/detach'">
-                                <span class="glyphicon glyphicon-remove"></span>
+                            <button type="button" class="btn btn-secondary" onclick="location.href='/annexes/{{{ $annex->id }}}/detach'">
+                                <span class="glyphicon glyphicon-minus"></span>
                             </button>
                         @endif
                     </td>
                     <td>
-                        <button type="button" class="btn btn-primary" onclick="window.location.href='/annexes/{{ $annex->id }}/edit'">
+                        <button type="button" class="btn btn-primary" onclick="location.href='/annexes/{{ $annex->id }}/edit'">
                             <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <button type="button" class="btn btn-danger" onclick="location.href='/annexes/{{ $annex->id }}/delete'">    
+                            <span class="glyphicon glyphicon-remove"></span>
                         </button>
                     </td>
                 </tr>
