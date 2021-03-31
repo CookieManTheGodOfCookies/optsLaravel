@@ -1,2 +1,2 @@
-# то же, что opts-kafedra, только на Laravel
+# Laravel app for department of student practice and student employment
 такие дела
